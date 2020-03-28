@@ -7,7 +7,7 @@ module.exports = {
     
     const ong = await connection('ongs')
       .where('id', id)
-      .select('name')
+      .select('name', 'id')
       .first()
 
     if(!ong) return res.status(400).json({ error: "Seu email ou senha podem estar incorretos." })

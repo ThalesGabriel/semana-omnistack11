@@ -2,7 +2,7 @@ const withCSS = require('@zeit/next-css');
 
 module.exports = withCSS({
   env: {
-    BASE_URL: 'http://localhost:3000',
+    BASE_URL: 'http://localhost:3001',
   },
   webpack: function(config) {
     (config.node = {

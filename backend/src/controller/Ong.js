@@ -5,7 +5,7 @@ module.exports = {
   async create(req, res) {
     const { name, email, wpp, city, uf } = req.body;
     const id = crypto.randomBytes(4).toString('HEX');
-
+    console.log(req.body)
     await connection('ongs').insert({
       id,
       name,
@@ -15,7 +15,7 @@ module.exports = {
       uf
     })
 
-    return res.json({ id });
+    return res.json({ id })
   },
 
   async getAll(req, res) {
@@ -30,5 +30,5 @@ module.exports = {
     await connection('ongs').where('id', id).delete();
 
     return res.status(204).send();
-  }
+  },
 }

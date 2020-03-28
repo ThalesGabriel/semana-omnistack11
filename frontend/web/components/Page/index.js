@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { Box } from '@material-ui/core';
+
+import Header from './components/Header';
 
 const CustomPage = styled(Box)`
   max-width: fit-content;
@@ -13,9 +16,10 @@ const CustomPage = styled(Box)`
   overflow: hidden;
 `
 
-function Page({children}) {
+function Page({children, protegida=false, protect}) {
   return (
     <CustomPage>
+      {protegida? <Header /> : null}
       {children}
     </CustomPage>
   );

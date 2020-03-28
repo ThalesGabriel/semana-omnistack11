@@ -13,6 +13,7 @@ routes.get('/profile', ProfileController.getIncidents)
 
 routes.post('/ongs', OngController.create) 
 routes.post('/incidents', IncidentController.create) 
+routes.put('/incidents/:id', IncidentController.change) 
 routes.post('/session', SessionController.create)
 
 routes.delete('/ongs/:id', OngController.delete)
