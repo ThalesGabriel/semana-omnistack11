@@ -8,7 +8,7 @@ const routes = express.Router();
 
 routes.get('/ongs', OngController.getAll)
 routes.get('/incidents', IncidentController.getAll)
-routes.get('/incidents', IncidentController.getAll)
+routes.get('/some-incidents', IncidentController.getAllPaginated)
 routes.get('/profile', ProfileController.getIncidents)
 
 routes.post('/ongs', OngController.create) 

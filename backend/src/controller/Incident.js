@@ -19,8 +19,8 @@ module.exports = {
     const { page = 1 } = req.query;
 
     const [count] = await connection('incidents').count()
-    const incidents = await connection('incidents').select('*')
-      .join('ongs', 'ong_id', '=', 'incidents.ong_id')
+    const incidents = await connection('ongs')
+      .join('incidents', 'ong_id', '=', 'ongs.id')
       .limit(5)
       .offset((page -1) * 5)
       .select([
@@ -37,9 +37,19 @@ module.exports = {
 
   async getAll(req, res) {
 
-    const incidents = await connection('incidents').select('*')
+    const [count] = await connection('incidents').count()
+    const incidents = await connection('ongs')
+      .join('incidents', 'ong_id', '=', 'ongs.id')
+      .select([
+        'incidents.*',
+        'ongs.name',
+        'ongs.email',
+        'ongs.wpp',
+        'ongs.city',
+        'ongs.uf',
+      ]);
 
-    return res.json({data: incidents});
+    return res.json({data: incidents, amount: count['count(*)']});
   },
 
   async change(req, res) {
